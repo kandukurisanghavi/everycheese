@@ -1,6 +1,7 @@
 from django.db import models
 from autoslug import AutoSlugField
 from model_utils.models import TimeStampedModel
+from django_countries.fields import CountryField
 
 class Cheese(TimeStampedModel):
     class Firmness(models.TextChoices):
@@ -15,6 +16,7 @@ class Cheese(TimeStampedModel):
         unique=True, always_update=False, populate_from="name"
     )
     description = models.TextField("Description", blank=True)
+    country_of_origin = CountryField("Country of Origin", blank=True)
 
     # Other Fields Here...
     firmness = models.CharField("Firmness", max_length=20,
