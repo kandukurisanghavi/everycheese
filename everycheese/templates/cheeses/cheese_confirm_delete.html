@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Cheese{% endblock title %}
+
+{% block content %}
+    <h2>Delete Cheese</h2>
+    <p>Delete "{{ cheese.name }}"?</p>
+
+
+    <form method="post" action="{% url 'cheeses:delete_cheese' cheese.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'cheeses:list' %}" class="btn btn-primary">Cancel</a>
+    </form>
+{% endblock content %}
